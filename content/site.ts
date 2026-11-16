@@ -49,7 +49,7 @@ export const company = {
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : "https://[DOMÍNIO]"),
   /** Usuário do Instagram sem @ (ex.: "lgfinancas"). Vazio = não aparece no site. */
-  instagram: "",
+  instagram: "lgsolucoes.financeiras",
   city: "Rio de Janeiro",
   tagline: "Parceira Cora na abertura de contas PJ.",
   year: 2026,

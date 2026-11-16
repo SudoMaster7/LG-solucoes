@@ -143,7 +143,7 @@ Aparecem visíveis no site até serem trocados:
 - [ ] `[CNPJ]` e `[RAZÃO SOCIAL]`: `company.cnpj` e `company.legalName`, depois `SHOW_COMPANY_ID = true`
 - [x] Logo oficial da Cora (`public/parceiros/logo-cora.svg`)
 - [ ] Regras de uso do kit de marca da Cora (conferir área de proteção e uso sobre fundo escuro)
-- [ ] Instagram: preencher `company.instagram` quando o perfil existir
+- [x] Instagram: @lgsolucoes.financeiras
 - [ ] `[FOTO DOS SÓCIOS]` (opcional): `trust.about.photo`. Hoje usa o símbolo da marca
 - [ ] `NEXT_PUBLIC_META_PIXEL_ID`
 - [ ] Depoimentos reais autorizados (quando houver)
