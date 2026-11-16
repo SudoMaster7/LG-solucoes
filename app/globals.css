@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 84px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    /* texto 16px (mobile) → 18px (desktop) */
+    font-size: clamp(1rem, 0.951rem + 0.217vw, 1.125rem);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-bold text-navy;
+    line-height: 1.2;
+  }
+  :focus-visible {
+    outline: 3px solid #0b2545;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  .on-dark :focus-visible {
+    outline-color: #c9a227;
+  }
+}
+
+@layer components {
+  .container-lg {
+    @apply mx-auto w-full max-w-container px-5 lg:px-8;
+  }
+  /* H1 30px → 52px */
+  .text-h1 {
+    font-size: clamp(1.875rem, 1.34rem + 2.39vw, 3.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+  /* H2 24px → 36px */
+  .text-h2 {
+    font-size: clamp(1.5rem, 1.206rem + 1.304vw, 2.25rem);
+    line-height: 1.2;
+  }
+  .text-h3 {
+    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+    line-height: 1.35;
+  }
+  /* Rótulo: SemiBold 600, caixa alta, letter-spacing 0.2em */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[0.8125rem] font-semibold uppercase leading-none;
+    letter-spacing: 0.2em;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply block h-2 w-2 shrink-0 rotate-45 bg-gold;
+  }
+  .section {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+  .card {
+    @apply rounded-card border border-line bg-white p-6 shadow-card;
+  }
+  .btn-whatsapp {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-btn bg-brand px-5 text-center font-semibold text-white transition-colors duration-150 hover:bg-brand-hover active:bg-brand-hover;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: lg-fade 200ms ease-out both;
+  }
+  @keyframes lg-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in {
+      animation: none;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0ms !important;
+      animation-duration: 0ms !important;
+    }
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
