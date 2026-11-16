@@ -1,18 +1,21 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const isDev =process.env.NODE_ENV !== "production";
+const isDev = process.env.NODE_ENV !== "production";
+// Nos previews da Vercel, libera a barra de comentários (vercel.live).
+const isPreview = process.env.VERCEL_ENV === "preview";
+const live = isPreview ? " https://vercel.live" : "";
 
 // CSP: só o próprio site + Pixel da Meta. As fontes são servidas pelo próprio
 // site (next/font baixa a Montserrat no build), então não há domínio externo de fontes.
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' https://connect.facebook.net${isDev ? " 'unsafe-eval'" : ""}`,
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://www.facebook.com",
-  "font-src 'self' data:",
-  "connect-src 'self' https://www.facebook.com https://connect.facebook.net",
-  "frame-src https://www.facebook.com",
+  `script-src 'self' 'unsafe-inline' https://connect.facebook.net${isDev ? " 'unsafe-eval'" : ""}${live}`,
+  `style-src 'self' 'unsafe-inline'${live}`,
+  `img-src 'self' data: blob: https://www.facebook.com${live}`,
+  `font-src 'self' data:${live}`,
+  `connect-src 'self' https://www.facebook.com https://connect.facebook.net${live}`,
+  `frame-src https://www.facebook.com${live}`,
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

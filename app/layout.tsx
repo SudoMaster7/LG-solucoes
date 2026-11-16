@@ -49,6 +49,11 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   formatDetection: { telephone: false },
+  // Previews da Vercel ficam fora do Google.
+  robots:
+    process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production"
+      ? { index: false, follow: false }
+      : undefined,
 };
 
 export const viewport: Viewport = {

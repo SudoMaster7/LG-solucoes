@@ -42,7 +42,12 @@ export const company = {
   legalName: "[RAZÃO SOCIAL]",
   cnpj: "[CNPJ]",
   email: "[EMAIL]",
-  domain: process.env.NEXT_PUBLIC_SITE_URL || "https://[DOMÍNIO]",
+  /** URL pública. Ordem: NEXT_PUBLIC_SITE_URL → domínio de produção da Vercel → placeholder. */
+  domain:
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://[DOMÍNIO]"),
   /** Usuário do Instagram sem @ (ex.: "lgfinancas"). Vazio = não aparece no site. */
   instagram: "",
   city: "Rio de Janeiro",

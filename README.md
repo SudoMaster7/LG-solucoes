@@ -102,7 +102,7 @@ Veja [`.env.example`](.env.example).
 
 | Variável | Uso |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | URL pública (ex.: `https://lgfinancas.com.br`). Usada em canonical, sitemap, robots, Open Graph e JSON-LD |
+| `NEXT_PUBLIC_SITE_URL` | URL pública (ex.: `https://lgfinancas.com.br`). Usada em canonical, sitemap, robots, Open Graph e JSON-LD. Na Vercel, se vazia, usa o domínio `*.vercel.app` de produção |
 | `NEXT_PUBLIC_META_PIXEL_ID` | ID do Pixel da Meta. Vazio = Pixel desligado |
 | `NEXT_PUBLIC_WHATSAPP_ROUTING` | Sobrescreve `WHATSAPP_ROUTING` sem mexer no código |
 | `ENABLE_CAPI`, `NEXT_PUBLIC_ENABLE_CAPI` | Liga a Conversions API |
@@ -151,13 +151,31 @@ Aparecem visíveis no site até serem trocados:
 
 ---
 
-## 9. Checklist de publicação
+## 9. Deploy na Vercel
+
+O projeto já está pronto para a Vercel (`vercel.json` com região `gru1`, São Paulo).
+
+1. Em [vercel.com/new](https://vercel.com/new), importe o repositório `SudoMaster7/LG-solucoes`.
+2. A Vercel detecta Next.js sozinha. Não mude Build Command, Output Directory nem Root Directory.
+3. Em **Environment Variables**, cadastre as que já tiver (veja a seção 5). Nenhuma é obrigatória para o primeiro deploy:
+   - `NEXT_PUBLIC_META_PIXEL_ID`: quando o Pixel existir;
+   - `NEXT_PUBLIC_SITE_URL`: quando o domínio próprio existir (ex.: `https://lgfinancas.com.br`).
+4. Clique em **Deploy**. Cada `git push` na `main` publica em produção; outras branches geram previews.
+
+Como funciona a URL do site:
+- Sem `NEXT_PUBLIC_SITE_URL`, o site usa automaticamente o domínio de produção da Vercel (`*.vercel.app`) em canonical, Open Graph, sitemap e JSON-LD.
+- Ao conectar o domínio próprio (**Settings → Domains**), defina `NEXT_PUBLIC_SITE_URL` com ele e faça um novo deploy (**Deployments → Redeploy**). Variáveis `NEXT_PUBLIC_*` só valem a partir do próximo build.
+- Deploys de preview recebem `noindex` e `robots.txt` bloqueando tudo, para não aparecer no Google.
+
+---
+
+## 10. Checklist de publicação
 
 1. [ ] Conferir de novo a tabela de tarifas vigente em cora.com.br e atualizar `fees` e `feesCheckedAt`.
 2. [ ] Trocar todos os placeholders da seção 8.
 3. [ ] Conferir o uso do logo da Cora com as regras do kit de marca.
 4. [ ] Revisar `/privacidade` e `/termos` com a LG.
-5. [ ] Na Vercel: importar o projeto, definir as variáveis da seção 5 e apontar o domínio.
+5. [ ] Na Vercel: importar o projeto, definir as variáveis da seção 5 e apontar o domínio (seção 9).
 6. [ ] `npm run build` sem erros.
 7. [ ] Testar os dois números de WhatsApp e a mensagem com `?utm_campaign=teste` (deve terminar com `(ref: teste)`).
 8. [ ] Testar o Pixel com a extensão Meta Pixel Helper: nada antes do aceite; `PageView`, `Contact` e `ViewContent` depois.
@@ -168,7 +186,7 @@ Aparecem visíveis no site até serem trocados:
 
 ---
 
-## 10. Estrutura
+## 11. Estrutura
 
 ```
 app/
