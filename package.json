@@ -2,6 +2,9 @@
   "name": "lg-solucoes-site",
   "version": "1.0.0",
   "private": true,
+  "description": "Site da LG Soluções Financeiras",
+  "author": "LG Soluções Financeiras",
+  "license": "MIT",
   "engines": {
     "node": ">=20"
   },

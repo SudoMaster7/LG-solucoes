@@ -41,7 +41,7 @@ export const company = {
   name: "LG Soluções Financeiras",
   legalName: "[RAZÃO SOCIAL]",
   cnpj: "[CNPJ]",
-  email: "[EMAIL]",
+  email: "Lgsolucoesfinanceiras20@gmail.com",
   /** URL pública. Ordem: NEXT_PUBLIC_SITE_URL → domínio de produção da Vercel → placeholder. */
   domain:
     process.env.NEXT_PUBLIC_SITE_URL ||
