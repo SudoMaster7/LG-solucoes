@@ -4,6 +4,7 @@ import {
   ChartLine,
   CreditCard,
   FileBadge,
+  HandCoins,
   Landmark,
   Receipt,
   Wallet,
@@ -20,6 +21,7 @@ const map = {
   receipt: Receipt,
   chart: ChartLine,
   fileBadge: FileBadge,
+  handCoins: HandCoins,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof map;

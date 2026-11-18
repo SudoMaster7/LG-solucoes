@@ -126,6 +126,13 @@ export const benefits = {
   title: "O que a sua empresa ganha com a conta",
   items: [
     {
+      icon: "handCoins",
+      tag: "DIFERENCIAL LG",
+      featured: true,
+      title: "Análise de crédito privilegiada",
+      text: "Clientes indicados pela LG têm análise de crédito privilegiada na Cora, um caminho mais rápido para acessar linhas de crédito e capital de giro para a sua empresa.",
+    },
+    {
       icon: "badgeCheck",
       title: "Conta PJ gratuita",
       text: "Abertura e manutenção sem custo.",
